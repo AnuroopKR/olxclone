@@ -4,6 +4,7 @@ import './Signup.css';
 import FirebaseContext from '../store/FirebaseContext';
 import { getAuth, createUserWithEmailAndPassword ,updateProfile} from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { getFirestore, collection, addDoc } from "firebase/firestore"; 
 
 
 
@@ -14,6 +15,7 @@ const Singnup = () => {
   const [phoneNumber,setPhoneNumber]=useState("")
   const {firebase}=useContext(FirebaseContext)
   const navigate=useNavigate()
+  const firestore = getFirestore();
 
   // const {firebase}=useContext(FirebaseContext)
 
@@ -26,22 +28,25 @@ const Singnup = () => {
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
-    const user = userCredential.user;
+    // const user = userCredential.user;
     updateProfile(auth.currentUser, {
-      displayName: "username"
-    }).then(()=>{
-      console.log("asdfghj");
-      firebase.firestore().collection('users').add({
-        id:user.uid,
-        username:username,
-        phone:phoneNumber
-      }).then(()=>{
-        console.log("login");
-        navigate('/login')
-      })
+      displayName: username
     })
-    // ...
+  .then(()=>{
+      console.log("asdfghj");
+      addDoc(collection(firestore, 'users'), {
+        id: userCredential.user.uid,
+        username: username,
+        phone: phoneNumber
+      })
+      .then(()=>{
+        console.log("login");
+        navigate('/')
+      })
+      
+    })
   })
+    // ...
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
