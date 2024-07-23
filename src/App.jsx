@@ -8,6 +8,9 @@ import LoginPage from './pages/LoginPage'
 import { AuthContext } from './store/FirebaseContext'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Create from './components/Create'
+import PostProvider from './store/postContext'
+import ViewPage from './pages/ViewPage'
+
 
 function App() {
 
@@ -33,17 +36,20 @@ onAuthStateChanged(auth, (user) => {
 
   return (
     <>
+    <PostProvider>
     <BrowserRouter>
     <Routes>
      <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/create" element={<Create />} />
+      <Route path="/view" element={<ViewPage />} />
+
 
      </Routes>
     </BrowserRouter>
-     
-       
+    </PostProvider>
+   
     </>
   )
 }

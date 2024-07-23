@@ -13,11 +13,10 @@ const Singnup = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [phoneNumber,setPhoneNumber]=useState("")
-  const {firebase}=useContext(FirebaseContext)
+  const firebase=useContext(FirebaseContext)
   const navigate=useNavigate()
   const firestore = getFirestore();
-
-  // const {firebase}=useContext(FirebaseContext)
+console.log(firebase);
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -106,7 +105,7 @@ createUserWithEmailAndPassword(auth, email, password)
           <br />
           <button type='submit'>Signup</button>
         </form>
-        <a>Login</a>
+        <a onClick={()=>navigate("/login")}>Login</a>
       </div>
     </div>
   )

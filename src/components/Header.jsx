@@ -55,7 +55,7 @@ const Header = () => {
         <Arrow></Arrow>
       </div>
       <div className="loginPage">
-        <span>{user ? user.displayName : "Login"}</span>
+        <span onClick={()=>{user?navigate("/"):navigate("/login")}} style={{cursor: "pointer"}}>{user ? user.displayName : "Login"}</span>
         <hr />
       </div>
       {user&& <span onClick={userLogout} style={{ cursor: 'pointer'}}>Logout</span>}
