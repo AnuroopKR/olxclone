@@ -16,7 +16,6 @@ const Header = () => {
   const {user,setUser}=useContext(AuthContext)
   const {firebase}=useContext(FirebaseContext)
   const navigate=useNavigate()
-  console.log("user",user);
   const userLogout=()=>{
 
     const auth = getAuth();

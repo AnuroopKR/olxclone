@@ -23,6 +23,7 @@
   
   .recommendations .cards {
     display: flex;
+    overflow: scroll;
   }
   
   .moreView .cards {

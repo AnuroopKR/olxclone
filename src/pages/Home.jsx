@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 
 const Home = () => {
   return (
-    <div className="homeParentDiv">
+    <div className="homeParentDiv" style={{ width: '100%' }}>
       <Header/>
       <Banner/>
       <Post/>
