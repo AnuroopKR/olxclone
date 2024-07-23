@@ -1,8 +1,9 @@
 .headerParentDiv {
+  top: 0;
     padding: 10px;
     background-color: whitesmoke;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     z-index: 999;
   }
   
@@ -119,6 +120,7 @@
   .sellMenu {
     position: relative;
     cursor: pointer;
+    margin-right: 30px;
   }
   
   .sellMenu .all {

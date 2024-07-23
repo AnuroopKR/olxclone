@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Logo from'../assets/olx-logo.png';
 import './Login.css'
-import FirebaseContext from '../store/FirebaseContext';
+import {FirebaseContext} from '../store/FirebaseContext';
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const Login = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user);
+    console.log(user.displayName);
     navigate('/')
     // ...
   })
